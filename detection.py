@@ -192,9 +192,9 @@ class Detector:
             print(pose)
             # v.draw_instance_predictions(pose)
             for c in pose:
-                for box in predictions["instances"].pred_boxes.to('cpu'):
+                for box, label in zip(predictions["instances"].pred_boxes.to('cpu'), pose):
                     v.draw_box(box)
-                    v.draw_text(c, (box[0], box[1]))
+                    v.draw_text(label, (box[0], box[1]))
 
             # print(box[0].tolist(), box[1].tolist())
 
